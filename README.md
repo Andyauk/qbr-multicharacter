@@ -9,4 +9,6 @@ with KyroWasHere - added trigger call to qbr-spawn to get first time/mute "survi
 and MoneSuper snippets from there view.
 
 <a href="https://ibb.co/HrXVm51"><img src="https://i.ibb.co/LCv84Vb/1.jpg" alt="1" border="0"></a>
+
+
 <a href="https://ibb.co/JQ4fGjH"><img src="https://i.ibb.co/5FyNShL/2.jpg" alt="2" border="0"></a>

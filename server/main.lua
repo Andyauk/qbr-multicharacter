@@ -1,7 +1,12 @@
 -- Functions
 
 local StarterItems = {
-    ['apple'] = { amount = 1, item = 'apple' }
+    ['apple'] = { amount = 1, item = 'apple' },
+    ['water_bottle'] = { amount = 1, item = 'water_bottle' },
+    ['bandage'] = { amount = 1, item = 'bandage' },
+    ['painkillers'] = { amount = 1, item = 'painkillers' },
+    ['cigarette'] = { amount = 1, item = 'cigarette' },
+    ['weapon_melee_knife'] = { amount = 1, item = 'weapon_melee_knife' }
 }
 
 

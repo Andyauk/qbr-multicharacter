@@ -3,6 +3,9 @@ local choosingCharacter = false
 local currentSkin = nil
 local currentClothes = nil
 local selectingChar = true
+
+local isChossing = false
+
 local cams = {
     {
         type = "customization",
@@ -126,30 +129,10 @@ local function openCharMenu(bool)
     end)
 end
 
--- Events
-
--- RegisterNetEvent('qb-multicharacter:client:closeNUIdefault', function() -- This event is only for no starting apartments
---     DeleteEntity(charPed)
---     SetNuiFocus(false, false)
---     DoScreenFadeOut(500)
---     Wait(2000)
---     SetEntityCoords(PlayerPedId(), Config.DefaultSpawn.x, Config.DefaultSpawn.y, Config.DefaultSpawn.z)
---     TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
---     TriggerEvent('QBCore:Client:OnPlayerLoaded')
---     TriggerServerEvent('qb-houses:server:SetInsideMeta', 0, false)
---     TriggerServerEvent('qb-apartments:server:SetInsideMeta', 0, 0, false)
---     Wait(500)
---     openCharMenu()
---     SetEntityVisible(PlayerPedId(), true)
---     Wait(500)
---     DoScreenFadeIn(250)
---     TriggerEvent('qb-weathersync:client:EnableSync')
---     TriggerEvent('qb-clothes:client:CreateFirstCharacter')
--- end)
-
 RegisterNetEvent('qbr-multicharacter:client:closeNUI', function()
     DeleteEntity(charPed)
     SetNuiFocus(false, false)
+    isChossing = false
 end)
 
 RegisterNetEvent('qbr-multicharacter:client:chooseChar', function()
@@ -271,6 +254,7 @@ RegisterNUICallback('selectCharacter', function(data) -- When a char is selected
         Wait(500)
         exports['qbr-clothing']:loadClothes(PlayerPedId(), currentClothes, false)
         SetModelAsNoLongerNeeded(model)
+        
     end)
 end)
 
@@ -301,6 +285,7 @@ RegisterNUICallback('createNewCharacter', function(data) -- Creating a char
     DeleteEntity(charPed)
     SetModelAsNoLongerNeeded(charPed)
     TriggerServerEvent('qbr-multicharacter:server:createCharacter', data)
+    TriggerEvent('qbr-spawn:setFirstTime') -- simple true/false toggle :P
     Wait(1000)
     DoScreenFadeIn(1000)
 end)
@@ -320,6 +305,13 @@ CreateThread(function()
         Wait(0)
         if NetworkIsSessionStarted() then
             TriggerEvent('qbr-multicharacter:client:chooseChar')
+            isChossing = true
+            Citizen.CreateThread(function()
+                while isChossing do
+                    Wait(0)
+                    Citizen.InvokeNative(0xF1622CE88A1946FB)
+                end
+            end)
             return
         end
     end

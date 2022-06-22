@@ -17,7 +17,7 @@ And thanks to Geordie for his style changes.
 
 
 
-<a href="https://ibb.co/HrXVm51"><img src="https://i.ibb.co/LCv84Vb/1.jpg" alt="1" border="0"></a>
+<a href="https://ibb.co/F53s0Tx"><img src="https://i.ibb.co/n7m3nJg/qbrm1.jpg" alt="qbrm1" border="0"></a>
 
 
-<a href="https://ibb.co/JQ4fGjH"><img src="https://i.ibb.co/5FyNShL/2.jpg" alt="2" border="0"></a>
+<a href="https://ibb.co/mScgsY3"><img src="https://i.ibb.co/1bmjVpk/qbrm2.jpg" alt="qbrm2" border="0"></a>

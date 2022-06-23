@@ -2,6 +2,7 @@
 Multicharacter for RedM QBCore
 
 Remade by Andyuk
+Best used with https://github.com/Andyauk/qbr-spawn in the same style.
 
 A reskin/rework look for the qbr-multicharacter latest version.
 

@@ -20,7 +20,7 @@ end
 local function loadHouseData()
     local HouseGarages = {}
     local Houses = {}
-    local result = MySQL.Sync.fetchAll('SELECT * FROM houselocations')
+    local result = MySQL.query.await('SELECT * FROM houselocations')
     if result[1] ~= nil then
         for k, v in pairs(result) do
             local owned = false
@@ -87,7 +87,7 @@ end)
 exports['qbr-core']:CreateCallback("qb-multicharacter:server:setupCharacters", function(source, cb)
     local license = exports['qbr-core']:GetIdentifier(source, 'license')
     local plyChars = {}
-    MySQL.Async.fetchAll('SELECT * FROM players WHERE license = @license', {['@license'] = license}, function(result)
+    MySQL.query('SELECT * FROM players WHERE license = @license', {['@license'] = license}, function(result)
         for i = 1, (#result), 1 do
             result[i].charinfo = json.decode(result[i].charinfo)
             result[i].money = json.decode(result[i].money)
@@ -117,7 +117,7 @@ exports['qbr-core']:CreateCallback("qb-multicharacter:server:GetNumberOfCharacte
 end)
 
 exports['qbr-core']:CreateCallback("qbr-multicharacter:server:getSkin", function(source, cb, cid)
-    MySQL.Async.fetchAll('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {cid, 1}, function(result)
+    MySQL.query('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {cid, 1}, function(result)
         result[1].skin = json.decode(result[1].skin)
         result[1].clothes = json.decode(result[1].clothes)
         cb(result[1])

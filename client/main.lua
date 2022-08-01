@@ -199,8 +199,7 @@ RegisterNUICallback('cDataPed', function(data) -- Visually seeing the char
                         "mp_male",
                         "mp_female",
                     }
-                    local randomModel = randommodels[math.random(1, #randommodels)]
-                    local model = GetHashKey(randomModel)
+                    local model = joaat(randommodels[math.random(1, #randommodels)])
                     RequestModel(model)
                     while not HasModelLoaded(model) do
                         Wait(0)
@@ -220,8 +219,7 @@ RegisterNUICallback('cDataPed', function(data) -- Visually seeing the char
                 "mp_male",
                 "mp_female",
             }
-            local randomModel = randommodels[math.random(1, #randommodels)]
-            local model = GetHashKey(randomModel)
+            local model = joaat(randommodels[math.random(1, #randommodels)])
             RequestModel(model)
             while not HasModelLoaded(model) do
                 Wait(0)

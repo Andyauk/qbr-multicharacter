@@ -117,7 +117,7 @@ exports['qbr-core']:CreateCallback("qb-multicharacter:server:GetNumberOfCharacte
 end)
 
 exports['qbr-core']:CreateCallback("qbr-multicharacter:server:getSkin", function(source, cb, cid)
-    MySQL.query.await('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {cid, 1}, function(result)
+    MySQL.query('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {cid, 1}, function(result)
         result[1].skin = json.decode(result[1].skin)
         result[1].clothes = json.decode(result[1].clothes)
         cb(result[1])
